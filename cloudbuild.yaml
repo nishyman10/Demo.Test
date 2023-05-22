@@ -1,12 +1,28 @@
-#Execute SAST Scan using SonarCloud in GCP DevSecOps Pipeline
-  steps:
-  # Step 1: Build your application
+steps:
+  # Step 1: Clone the GitHub repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', '.']
+
+  # Step 2: Build your application
   - name: 'gcr.io/cloud-builders/mvn:3.9.1'
     args: ['clean', 'install']
 
-  # Step 2: Run SonarCloud analysis
+  # Step 3: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
-    args: [args:'-Dsonar.projectKey=nishyman10', '-Dsonar.organization=nishyman10_Demo.Test', '-Dsonar.sources=src', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2']
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        sonar-scanner \
+        -Dsonar.projectKey=nishyman10 \
+        -Dsonar.organization=nishyman10_Demo.Test \
+        -Dsonar.sources=src \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
+        -Dsonar.pullrequest.key=${_PR_NUMBER} \
+        -Dsonar.pullrequest.branch=${_BRANCH_NAME} \
+        -Dsonar.pullrequest.base=${_BASE_BRANCH_NAME} \
+        -Dsonar.pullrequest.github.repository=nishyman10/Demo.Test
 
 artifacts:
   # Define your build artifacts here, if any
