@@ -6,7 +6,7 @@
 
   # Step 2: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
-    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=nishyman10','-Dsonar.projectKey=nishyman10_Demo.Test','-Dsonar.login=ac09d75ceb170d48c712b22be83ef681ea77a7b8']
+    args: ['verify','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=nishyman10','-Dsonar.projectKey=nishyman10_Demo.Test','-Dsonar.login=ac09d75ceb170d48c712b22be83ef681ea77a7b8']
 
 artifacts:
   # Define your build artifacts here, if any
