@@ -1,13 +1,9 @@
 steps:
-  # Step 1: Clone the GitHub repository
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', '.']
-
-  # Step 2: Build your application
+  # Step 1: Build your application
   - name: 'gcr.io/cloud-builders/mvn:3.9.1'
     args: ['clean', 'install']
 
-  # Step 3: Run SonarCloud analysis
+  # Step 2: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
     entrypoint: 'bash'
     args:
