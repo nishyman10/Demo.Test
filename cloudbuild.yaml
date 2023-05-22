@@ -1,4 +1,3 @@
-steps:
 #Execute SAST Scan using SonarCloud in GCP DevSecOps Pipeline
   steps:
   # Step 1: Build your application
@@ -7,7 +6,7 @@ steps:
 
   # Step 2: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
-    args: ['-Dsonar.projectKey=your-project-key', '-Dsonar.organization=your-organization-key', '-Dsonar.sources=src', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=your-sonarcloud-token']
+    args: ['-Dsonar.projectKey=nishyman10', '-Dsonar.organization=nishyman10', '-Dsonar.sources=src', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=6c0d9d20da6baf91f6336fb4e3208033e75e481b']
 
 artifacts:
   # Define your build artifacts here, if any
