@@ -1,7 +1,20 @@
 steps:
+  # Step 1: Checkout the source code
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', '.']
+
+  # Step 2: Compile Java files
+  - name: 'gcr.io/cloud-builders/mvn:3.9.1'
+    args: ['compile']
+
+  # Add more build steps as needed
+
+artifacts:
+  # Define your build artifacts here, if any
+
   # Step 1: Build your application
   - name: 'gcr.io/cloud-builders/mvn:3.9.1'
-    args: ['compile','clean', 'install']
+    args: ['clean', 'install']
 
   # Step 2: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
