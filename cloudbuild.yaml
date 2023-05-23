@@ -1,7 +1,7 @@
 steps:
   # Step 1: Build your application
   - name: 'gcr.io/cloud-builders/mvn:3.9.1'
-    args: ['clean', 'install']
+    args: ['compile','clean', 'install']
 
   # Step 2: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
