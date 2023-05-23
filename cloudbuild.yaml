@@ -10,8 +10,8 @@ steps:
       - '-c'
       - |
         sonar-scanner \
-        -Dsonar.projectKey=nishyman10 \
-        -Dsonar.organization=nishyman10_Demo.Test \
+        -Dsonar.projectKey=nishyman10_Demo.Test \
+        -Dsonar.organization=nishyman10 \
         -Dsonar.sources=src \
         -Dsonar.host.url=https://sonarcloud.io \
         -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
