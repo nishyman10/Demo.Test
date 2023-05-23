@@ -19,6 +19,7 @@ steps:
         -Dsonar.pullrequest.branch=${_BRANCH_NAME} \
         -Dsonar.pullrequest.base=${_BASE_BRANCH_NAME} \
         -Dsonar.pullrequest.github.repository=nishyman10/Demo.Test
+        -Dsonar.exclusions=**/*.java
 
 artifacts:
   # Define your build artifacts here, if any
