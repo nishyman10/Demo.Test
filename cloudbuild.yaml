@@ -10,6 +10,7 @@ steps:
   # Step 3: Run SonarCloud analysis
   - name: 'sonarsource/sonar-scanner-cli'
     entrypoint: 'bash'
+    dir: 'src/com/ibm/security/appscan/altoromutual'
     args:
       - '-c'
       - |
