@@ -1,7 +1,7 @@
 steps:
   # Step 1: Checkout the source code
   - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git']
+    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', 'branch=Altoro-3.4']
 
   # Step 2: Compile Java files
   - name: 'gcr.io/cloud-builders/mvn:3.9.1'
