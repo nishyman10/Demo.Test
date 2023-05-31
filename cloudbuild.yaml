@@ -17,7 +17,7 @@ steps:
         sonar-scanner \
         -Dsonar.projectKey=nishyman10_Demo.Test \
         -Dsonar.organization=nishyman10 \
-        -Dsonar.sources=src \
+        -Dsonar.sources=src/com/ibm/security/appscan/altoromutual \
         -Dsonar.host.url=https://sonarcloud.io \
         -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
         -Dsonar.pullrequest.key=${_PR_NUMBER} \
