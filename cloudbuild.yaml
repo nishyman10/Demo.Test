@@ -7,18 +7,13 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/mvn', 'source']
   
-  # Step 3: Install SonarScanner CLI
-  - name: 'openjdk:11'
+ # Step 3: Install SonarScanner CLI
+  - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        apt-get update && apt-get install -y unzip
-        curl -LsS -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
-        unzip sonar-scanner.zip && rm sonar-scanner.zip
-        export SONAR_SCANNER_HOME=$PWD/sonar-scanner-4.6.2.2472-linux
-        export PATH=$SONAR_SCANNER_HOME/bin:$PATH
-        apt-get install -y maven
+        npm install -g sonarqube-scanner
   
   # Step 4: Scan the source code using SonarScanner CLI
   - name: 'openjdk:11'
