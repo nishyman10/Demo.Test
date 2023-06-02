@@ -16,7 +16,7 @@ steps:
         npm install -g sonarqube-scanner
   
   # Step 4: Scan the source code using SonarScanner CLI
-  - name: 'openjdk:11'
+  - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
       - '-c'
