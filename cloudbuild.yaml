@@ -28,9 +28,12 @@ steps:
       - '-c'
       - |
         sonar-scanner \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
-          -Dsonar.projectKey=nishyman10_Demo.Test \
-          -Dsonar.organization=nishyman10 \
-          -Dsonar.sources=source \
-          -Dsonar.java.binaries=source/target/classes
+        -Dsonar.projectKey=nishyman10_Demo.Test \
+        -Dsonar.organization=nishyman10 \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
+        -Dsonar.pullrequest.key=${_PR_NUMBER} \
+        -Dsonar.pullrequest.branch=${_BRANCH_NAME} \
+        -Dsonar.pullrequest.base=${_BASE_BRANCH_NAME} \
+        -Dsonar.pullrequest.github.repository=nishyman10/Demo.Test
+        -Dsonar.java.binaries=source/target/classes
