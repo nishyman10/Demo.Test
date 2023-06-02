@@ -31,5 +31,6 @@ steps:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
           -Dsonar.projectKey=nishyman10_Demo.Test \
+          -Dsonar.organization=nishyman10 \
           -Dsonar.sources=source \
           -Dsonar.java.binaries=source/target/classes
