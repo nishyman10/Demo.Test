@@ -2,8 +2,15 @@ steps:
   # Step 1: Clone the Git repository
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', 'source']
+    
+  # Step 2: Additional build steps
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/mvn', 'source']
   
-  # Step 2: Install SonarScanner CLI
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/mvn']
+  
+  # Step 3: Install SonarScanner CLI
   - name: 'openjdk:11'
     entrypoint: 'bash'
     args:
@@ -14,7 +21,7 @@ steps:
         unzip sonar-scanner.zip && rm sonar-scanner.zip
         export PATH=$PATH:/workspace/sonar-scanner-4.6.0.2311-linux/bin
   
-  # Step 3: Scan the source code using SonarScanner CLI
+  # Step 4: Scan the source code using SonarScanner CLI
   - name: 'openjdk:11'
     entrypoint: 'bash'
     args:
