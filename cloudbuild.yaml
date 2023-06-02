@@ -19,7 +19,7 @@ steps:
         apt-get update && apt-get install -y unzip
         curl -LsS -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
         unzip sonar-scanner.zip && rm sonar-scanner.zip
-        export PATH=$PATH:/workspace/sonar-scanner-4.6.0.2311-linux/bin
+        export SONAR_SCANNER_PATH=$PATH:/workspace/sonar-scanner-4.6.0.2311-linux/bin
   
   # Step 4: Scan the source code using SonarScanner CLI
   - name: 'openjdk:11'
@@ -28,12 +28,8 @@ steps:
       - '-c'
       - |
         sonar-scanner \
-        -Dsonar.projectKey=nishyman10_Demo.Test \
-        -Dsonar.organization=nishyman10 \
         -Dsonar.host.url=https://sonarcloud.io \
         -Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2 \
-        -Dsonar.pullrequest.key=${_PR_NUMBER} \
-        -Dsonar.pullrequest.branch=${_BRANCH_NAME} \
-        -Dsonar.pullrequest.base=${_BASE_BRANCH_NAME} \
-        -Dsonar.pullrequest.github.repository=nishyman10/Demo.Test
+        -Dsonar.projectKey=nishyman10_Demo.Test \
+        -Dsonar.sources=source \
         -Dsonar.java.binaries=source/target/classes
