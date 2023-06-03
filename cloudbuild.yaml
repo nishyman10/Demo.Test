@@ -9,3 +9,14 @@
   
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/mvn']
+  
+  # Step 3: Install SonarScanner
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        curl -sSLo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472.zip
+        unzip sonarscanner.zip
+        rm sonarscanner.zip
+        chmod +x sonar-scanner-*/bin/sonar-scanner
