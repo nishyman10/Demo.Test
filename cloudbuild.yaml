@@ -19,4 +19,4 @@
         curl -sSLo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472.zip
         unzip sonarscanner.zip
         rm sonarscanner.zip
-        chmod +x sonar-scanner-*/bin/sonar-scanner
+        chmod +rwx sonar-scanner-*/bin/sonar-scanner
