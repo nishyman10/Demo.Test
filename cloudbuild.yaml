@@ -10,14 +10,10 @@
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/mvn']
     
-    # Step 3: Install unzip package
-  - name: 'gcr.io/cloud-builders/apt'
-    args: ['0.3.0']
-
-  - name: 'gcr.io/cloud-builders/apt'
-    args: ['install', '-y', 'unzip']
+  - name: 'gcr.io/cloud-builders/apt:0.3.0'
+    args: ['install', 'package-name']
   
-  # Step 4: Install SonarScanner
+  # Step 3: Install SonarScanner
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
     args:
