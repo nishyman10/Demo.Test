@@ -12,7 +12,7 @@
     
     # Step 3: Install unzip package
   - name: 'gcr.io/cloud-builders/apt'
-    args: ['update']
+    args: ['0.3.0']
 
   - name: 'gcr.io/cloud-builders/apt'
     args: ['install', '-y', 'unzip']
