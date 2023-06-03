@@ -7,7 +7,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/mvn', 'source']
   
- # Step 2: Install SonarScanner CLI
+ # Step 3: Install Sonar Scanner CLI
   - name: 'sonarsource/sonar-scanner-cli:latest'
     entrypoint: 'bash'
     args:
@@ -16,7 +16,7 @@ steps:
         export SONAR_USER_HOME=$HOME/.sonar/cache
         sonar-scanner --version
 
-  # Step 3: Execute SonarScanner CLI
+  # Step 4: Execute SonarScanner CLI
   - name: 'sonarsource/sonar-scanner-cli:latest'
     entrypoint: 'bash'
     args:
