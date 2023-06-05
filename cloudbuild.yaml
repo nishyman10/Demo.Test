@@ -18,8 +18,7 @@
     - '-Dsonar.projectKey=nishyman10'
     - '-Dsonar.organization=nishyman10_Demo.Test'
     - '-Dsonar.sources=.'
-    tags: ['cloud-builders-community']
-  
+    tags: ['cloud-builders-community'
     - name: 'gcr.io/cloud-builders/docker'
       args: 
       - 'build'
