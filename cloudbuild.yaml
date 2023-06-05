@@ -10,28 +10,29 @@
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/mvn']
     
-  # Step 3: SAST Scan
-- name: 'gcr.io/cloud-builders/docker'
-  args: 
-  - 'build'
-  - '--build-arg'
-  - 'SONARQUBE_SCANNER_CLI_VERSION=4.7.0.2747'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/sonar-scanner:4.7.0.2747'
-  - '.'
-
-images: 
-- 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
-- 'gcr.io/$PROJECT_ID/sonar-scanner:4.7.0.2747'
-
-  
-  # Step 4: SAST Scan
+   # Step 3: SAST Scan
   - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
     args:
     - '-Dsonar.host.url=https://sonarcloud.io'
     - '-Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2'
     - '-Dsonar.projectKey=nishyman10'
     - '-Dsonar.organization=nishyman10_Demo.Test'
-    - '-Dsonar.sources=.'
+    - '-Dsonar.sources=.
+    
+  # Step 4: SAST Scan
+- name: 'gcr.io/cloud-builders/docker'
+  args: 
+  - 'build'
+  - '--build-arg'
+  - 'SONARQUBE_SCANNER_CLI_VERSION=4.6.0.2311'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/sonar-scanner:4.6.0.2311'
+  - '.'
+
+images: 
+- 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
+- 'gcr.io/$PROJECT_ID/sonar-scanner:4.6.0.2311'
+
+  
