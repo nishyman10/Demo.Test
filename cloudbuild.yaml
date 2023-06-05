@@ -19,7 +19,7 @@
     - '-Dsonar.organization=nishyman10_Demo.Test'
     - '-Dsonar.sources=.
     
-    # Step 4: SAST Scan
+    # Step 4: SAST
     - name: 'gcr.io/cloud-builders/docker'
       args: 
       - 'build'
