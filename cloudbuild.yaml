@@ -1,7 +1,7 @@
   steps:
   # Step 1: Clone the Git repository
   - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', 'source']
+    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', 'src']
   
   # Step 2: Additional build steps
   - name: 'gcr.io/cloud-builders/docker'
@@ -17,7 +17,8 @@
     - '-Dsonar.login=30d7ea8abc8f6da04194590366dffd73cbec51f2'
     - '-Dsonar.projectKey=nishyman10'
     - '-Dsonar.organization=nishyman10_Demo.Test'
-    - '-Dsonar.sources=.'
+    - '-Dsonar.sources=src'
+    
    # Step 4:
     - name: 'gcr.io/cloud-builders/docker'
       args: 
