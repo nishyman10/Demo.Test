@@ -11,7 +11,6 @@
     args: ['push', 'gcr.io/$PROJECT_ID/mvn']
     
   # Step 3: SAST Scan
-  steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: 
   - 'build'
