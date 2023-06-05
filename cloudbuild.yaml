@@ -9,5 +9,5 @@ steps:
   
   # Run SonarScanner for SAST
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'sonar-scanner', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=97a9691220b6b9b0ee85f340d3ae7fea0593d905']
-    dir: 'src/api'  # Specify the directory where your code resides
+    args: ['run', 'build', 'sonar-scanner', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=97a9691220b6b9b0ee85f340d3ae7fea0593d905']
+    dir: 'src'  # Specify the directory where your code resides
