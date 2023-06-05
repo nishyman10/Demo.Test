@@ -1,29 +1,13 @@
-  steps:
-  # Step 1: Clone the Git repository
+steps:
+  # Clone the repository
   - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git', 'source']
+    args: ['clone', 'https://github.com/nishyman10/Demo.Test.git']
   
-  # Step 2: Additional build steps
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/mvn', 'source']
+  # Install SonarScanner
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install', '-g', 'sonarqube-scanner']
   
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/mvn']
-    
-  # Step 3: SAST Scan
-- name: 'gcr.io/cloud-builders/docker'
-  args: 
-  - 'build'
-  - '--build-arg'
-  - 'SONARQUBE_SCANNER_CLI_VERSION=4.6.0.2311'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/sonar-scanner:4.6.0.2311'
-  - '.'
-
-images: 
-- 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
-- 'gcr.io/$PROJECT_ID/sonar-scanner:4.6.0.2311'
-
-tags: ['cloud-builders-community']
+  # Run SonarScanner for SAST
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'sonar-scanner', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=97a9691220b6b9b0ee85f340d3ae7fea0593d905']
+    dir: 'src/api'  # Specify the directory where your code resides
