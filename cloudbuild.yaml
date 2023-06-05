@@ -18,7 +18,6 @@
     - '-Dsonar.projectKey=nishyman10'
     - '-Dsonar.organization=nishyman10_Demo.Test'
     - '-Dsonar.sources=.
-    
     tags: ['cloud-builders-community']
     
    # Step 4: SAST
