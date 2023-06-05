@@ -19,6 +19,8 @@
     - '-Dsonar.organization=nishyman10_Demo.Test'
     - '-Dsonar.sources=.
     
+    tags: ['cloud-builders-community']
+    
    # Step 4: SAST
     - name: 'gcr.io/cloud-builders/docker'
       args: 
