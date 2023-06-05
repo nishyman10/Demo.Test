@@ -10,13 +10,11 @@
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/mvn']
   
-  # Step 3: Install SonarScanner
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
+  # Step 3: SAST Scan
+  - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
     args:
-      - '-c'
-      - |
-        curl -sSLo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472.zip
-        unzip sonarscanner.zip
-        rm sonarscanner.zip
-        chmod +rwx sonar-scanner-*/bin/sonar-scanner
+    - '-Dsonar.host.url=https://sonarcloud.io'
+    - '-Dsonar.login={specify}'
+    - '-Dsonar.projectKey={specify}'
+    - '-Dsonar.organization={specify}'
+    - '-Dsonar.sources=.'
