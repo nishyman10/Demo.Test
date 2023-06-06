@@ -3,12 +3,9 @@ steps:
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/nishyman10/Demo.Test.git']
   
-  # Run SonarCloud analysis
-  - name: 'gcr.io/sonarqube/sonar-scanner'
-    args:
-      - '-Dsonar.host.url=https://sonarcloud.io'
-      - '-Dsonar.login=97a9691220b6b9b0ee85f340d3ae7fea0593d905'
-      - '-Dsonar.projectKey=nishyman10_Demo.Test'
-      - '-Dsonar.organization=nishyman10'
+  #Execute SonarCloud Scan
+  - name: maven:3-jdk-11
+    entrypoint: mvn
+    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=nishyman10','-Dsonar.projectKey=nishyman10_Demo.Test','-Dsonar.login=84928a51fd69add3260a84ebbe111a63ad1d55f4'
   
   # Additional build steps...
