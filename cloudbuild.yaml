@@ -6,6 +6,4 @@ steps:
   #Execute SonarCloud Scan
   - name: maven:3-jdk-11
     entrypoint: mvn
-    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=nishyman10','-Dsonar.projectKey=nishyman10_Demo.Test','-Dsonar.login=84928a51fd69add3260a84ebbe111a63ad1d55f4'
-  
-  # Additional build steps...
+    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=nishyman10','-Dsonar.projectKey=nishyman10_Demo.Test','-Dsonar.login=84928a51fd69add3260a84ebbe111a63ad1d55f4']
