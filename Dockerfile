@@ -6,7 +6,7 @@ EXPOSE 8080
 
 CMD /usr/local/tomcat/bin/catalina.sh run
 
-FROM ubuntu:latest
+FROM ubuntu:kinetic
 
 LABEL maintainer "Ram Gopinathan"
 
